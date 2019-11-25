@@ -22,7 +22,7 @@ public class Smoke {
     public void setup() {
     }
 
-    @Test(groups = {"smoke"})
+    @Test(groups = {"sanity"})
     public void my_first_test_success() throws Exception {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
