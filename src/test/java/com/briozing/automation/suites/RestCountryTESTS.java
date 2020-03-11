@@ -9,6 +9,7 @@ import com.briozing.automation.utils.TestSteps;
 import com.briozing.automation.utils.TestValidationHelper;
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class RestCountryTESTS {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_ALL_COUNTRIES.name(), true);
-            validateTest(testSteps);
+            validateTest(testSteps, "");
         } catch (Exception ex) {
             ex.printStackTrace();
             logger.info(ex);
@@ -40,12 +41,20 @@ public class RestCountryTESTS {
         }
     }
 
-    @Test(groups = {"smoke"})
-    public void verify_get_country_by_name() {
+    @DataProvider(name = "country-name-dp")
+    public Object[][] countryNameDP() {
+
+        return new Object[][] {
+                {"Australia"}
+        };
+    }
+
+    @Test(groups = {"smoke"}, dataProvider = "country-name-dp")
+    public void verify_get_country_by_name(String countryName) {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_COUNTRY_BY_NAME.name(), true);
-            validateTest(testSteps);
+            validateTest(testSteps, countryName);
         } catch (Exception ex) {
             ex.printStackTrace();
             logger.info(ex);
@@ -53,12 +62,12 @@ public class RestCountryTESTS {
         }
     }
 
-    @Test(groups = {"smoke"})
-    public void verify_get_country_by_fullname() {
+    @Test(groups = {"smoke"}, dataProvider = "country-name-dp")
+    public void verify_get_country_by_fullname(String countryName) {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name(), true);
-            validateTest(testSteps);
+            validateTest(testSteps, countryName);
         } catch (Exception ex) {
             ex.printStackTrace();
             logger.info(ex);
@@ -66,7 +75,7 @@ public class RestCountryTESTS {
         }
     }
 
-    private void validateTest(Map<String, Boolean> testSteps) throws Exception {
+    private void validateTest(Map<String, Boolean> testSteps, String countryName) throws Exception {
         if (null != testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name()) && testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_ALL_COUNTRIES.name());
             final CountryDetailsDTO[] response = restCountriesHelper.getAllCountries(200)
@@ -75,13 +84,13 @@ public class RestCountryTESTS {
         }
         if (null != testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_NAME.name()) && testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_NAME.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_COUNTRY_BY_NAME.name());
-            final CountryDetailsDTO[] response = restCountriesHelper.getCountryByName("Australia", 200)
+            final CountryDetailsDTO[] response = restCountriesHelper.getCountryByName(countryName, 200)
                     .getBody().as(CountryDetailsDTO[].class);
             validationHelper.verify_get_country_by_name(response);
         }
         if (null != testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name()) && testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name());
-            final CountryDetailsDTO[] response = restCountriesHelper.getCountryByFullName("India", 200)
+            final CountryDetailsDTO[] response = restCountriesHelper.getCountryByFullName(countryName, 200)
                     .getBody().as(CountryDetailsDTO[].class);
             validationHelper.verify_get_country_by_name(response);
         }
