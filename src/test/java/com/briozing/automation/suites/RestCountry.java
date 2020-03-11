@@ -2,19 +2,16 @@ package com.briozing.automation.suites;
 
 import com.briozing.automation.factory.Log4JFactory;
 import com.briozing.automation.helpers.RestCountriesHelper;
-import com.briozing.automation.listners.ReportListner;
 import com.briozing.automation.utils.AppAssert;
 import com.briozing.automation.utils.MainUtils;
 import com.briozing.automation.utils.TestSteps;
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Listeners(ReportListner.class)
 public class RestCountry {
 
     private Logger logger = Log4JFactory.getLogger(this.getClass().getSimpleName());
@@ -31,7 +28,6 @@ public class RestCountry {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_ALL_COUNTRIES.name(), true);
-
             validateTest(testSteps);
         } catch (Exception ex) {
             AppAssert.assertTrue(false, "Failure getting all countries");
@@ -45,7 +41,6 @@ public class RestCountry {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_COUNTRY_BY_NAME.name(), true);
-
             validateTest(testSteps);
         } catch (Exception ex) {
             AppAssert.assertTrue(false, "Failure getting country by name");
@@ -59,7 +54,6 @@ public class RestCountry {
         try {
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name(), true);
-
             validateTest(testSteps);
         } catch (Exception ex) {
             AppAssert.assertTrue(false, "Failure getting country by fullName");

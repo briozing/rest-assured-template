@@ -23,11 +23,6 @@ public class InitializeTestSuite {
             try {
                 properties.load(MainUtils.loadProperties(envName + ".properties"));
                 Configuration.apiServer = MainUtils.fetchProperty(properties, "api.server");
-                Configuration.dbServer = MainUtils.fetchProperty(properties, "db.server");
-                Configuration.dbName = MainUtils.fetchProperty(properties, "db.name");
-                Configuration.dbPort = MainUtils.fetchProperty(properties, "db.port");
-                Configuration.dbUser = MainUtils.fetchProperty(properties, "db.user");
-                Configuration.dbPassword = MainUtils.fetchProperty(properties, "db.password");
             } catch (Exception e) {
                 e.printStackTrace();
                 AppAssert.assertTrue(false, "Before suite failed due to exception");

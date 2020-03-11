@@ -29,7 +29,6 @@ public class RestCountriesHelper {
     public Response getAllCountries() {
         final Response response = given(requestSpecification)
                 .get("/all");
-        //logger.info(response.prettyPrint());
         response.prettyPrint();
         return response;
     }

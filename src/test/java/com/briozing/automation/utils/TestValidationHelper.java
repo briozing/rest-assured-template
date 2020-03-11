@@ -8,5 +8,6 @@ public class TestValidationHelper {
     private Logger logger = Log4JFactory.getLogger(this.getClass().getSimpleName());
 
     public TestValidationHelper() {
+
     }
 }
