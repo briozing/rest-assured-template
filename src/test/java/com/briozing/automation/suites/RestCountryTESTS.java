@@ -44,7 +44,7 @@ public class RestCountryTESTS {
     @DataProvider(name = "country-name-dp")
     public Object[][] countryNameDP() {
 
-        return new Object[][] {
+        return new Object[][]{
                 {"Australia"}
         };
     }
