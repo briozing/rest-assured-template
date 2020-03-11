@@ -26,27 +26,30 @@ public class RestCountriesHelper {
                 .baseUri(Configuration.apiServer);
     }
 
-    public Response getAllCountries() {
+    public Response getAllCountries(int status) {
         final Response response = given(requestSpecification)
                 .get("/all");
         response.prettyPrint();
+        response.then().assertThat().statusCode(status);
         return response;
     }
 
-    public Response getCountryByName(String country) {
+    public Response getCountryByName(String country, int status) {
         final Response response = given(requestSpecification)
                 .pathParam("country-name", country)
                 .get("/name/{country-name}");
         logger.info(response.print());
+        response.then().assertThat().statusCode(status);
         return response;
     }
 
-    public Response getCountryByFullName(String country) {
+    public Response getCountryByFullName(String country, int status) {
         final Response response = given(requestSpecification)
                 .pathParam("country-name", country)
                 .queryParam("fullText", "true")
                 .get("/name/{country-name}");
         logger.info(response.print());
+        response.then().assertThat().statusCode(status);
         return response;
     }
 

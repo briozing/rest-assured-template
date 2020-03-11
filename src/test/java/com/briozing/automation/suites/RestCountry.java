@@ -65,15 +65,15 @@ public class RestCountry {
     private void validateTest(Map<String, Boolean> testSteps) throws Exception {
         if (null != testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name()) && testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_ALL_COUNTRIES.name());
-            restCountriesHelper.getAllCountries();
+            restCountriesHelper.getAllCountries(200);
         }
         if (null != testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_NAME.name()) && testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_NAME.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_COUNTRY_BY_NAME.name());
-            restCountriesHelper.getCountryByName("Australia");
+            restCountriesHelper.getCountryByName("Australia", 200);
         }
         if (null != testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name()) && testSteps.get(TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_COUNTRY_BY_FULL_NAME.name());
-            restCountriesHelper.getCountryByFullName("India");
+            restCountriesHelper.getCountryByFullName("India", 200);
         }
     }
 }
