@@ -9,7 +9,7 @@ import org.testng.Assert;
  */
 public class AppAssert {
 
-    private static Logger logger = Log4JFactory.getLogger("AssertLogger");
+    private static Logger logger;
 
     static {
         logger = Log4JFactory.getLogger("AssertLogger");
