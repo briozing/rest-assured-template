@@ -75,6 +75,11 @@ public class RestCountryTESTS {
         }
     }
 
+    @Test
+    public void sample_test(){
+        
+    }
+
     private void validateTest(Map<String, Boolean> testSteps, String countryName) throws Exception {
         if (null != testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name()) && testSteps.get(TestSteps.STEP_GET_ALL_COUNTRIES.name())) {
             MainUtils.stepLog(logger, TestSteps.STEP_GET_ALL_COUNTRIES.name());
