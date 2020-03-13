@@ -48,4 +48,31 @@ public class RestCountriesHelper {
         return response;
     }
 
+    public Response getCountryByAlphacode(String alphacode,int status){
+        final Response response = given(requestSpecification)
+                .pathParam("alphacode-name", alphacode)
+                .get("/alpha/{alphacode-name}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
+    public Response getCountryByCapital(String capital, int status) {
+        final Response response = given(requestSpecification)
+                .pathParam("capital-name", capital)
+                .get("/capital/{capital-name}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
+    public Response getCountryByCurrencyCodes(String currencycode, int status) {
+        final Response response = given(requestSpecification)
+                .pathParam("currency-code-name", currencycode)
+                .get("/currency/{currency-code-name}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
 }
