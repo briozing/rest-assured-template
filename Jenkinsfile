@@ -40,7 +40,7 @@ def checkoutRepository() {
               extensions                       : [[$class           : 'RelativeTargetDirectory',
                                                    relativeTargetDir: targetDir]],
               submoduleCfg                     : [],
-              userRemoteConfigs                : [[credentialsId: '	MyGitHubCredentials', url: repoUrl]]
+              userRemoteConfigs                : [[credentialsId: 'MyGitHubCredentials', url: repoUrl]]
     ])
 
 }
