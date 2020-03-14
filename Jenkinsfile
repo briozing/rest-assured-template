@@ -46,14 +46,15 @@ def checkoutRepository() {
 }
 
 def compileCode() {
-    dir('ngp-ui-automation') {
+    dir('rest-assured-template') {
         withMaven() {
             bat "mvn clean compile"
         }
     }
+}
 
 def runAutomationTest() {
-    dir('ngp-ui-automation') {
+    dir('rest-assured-template') {
         withMaven() {
             bat "mvn clean test"
         }
