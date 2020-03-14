@@ -2,7 +2,7 @@ node {
     try {
 
         stage("Initialize") {
-            cleanWs()
+            echo "Initialize"
         }
 
         stage("Checkout") {
