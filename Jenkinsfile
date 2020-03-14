@@ -2,11 +2,15 @@ node {
     try {
 
         stage("Initialize") {
-            compileCode()
+            cleanWs()
         }
 
         stage("Checkout") {
             checkoutRepository()
+        }
+
+        stage("Compile") {
+            compileCode()
         }
 
         stage('Build and Test') {
