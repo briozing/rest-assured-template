@@ -55,7 +55,7 @@ def compileCode() {
 def runAutomationTest() {
     dir('ngp-ui-automation') {
         withMaven() {
-            bat "mvn clean test
+            bat "mvn clean test"
         }
     }
 }
