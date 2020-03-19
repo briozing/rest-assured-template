@@ -75,4 +75,39 @@ public class RestCountriesHelper {
         return response;
     }
 
+    public Response getCountryByLanguageCodes(String languagecode, int status){
+        final Response response = given(requestSpecification)
+                .pathParam("language-code-name", languagecode)
+                .get("/lang/{language-code-name}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
+    public Response getCountryByCallingCodes(String callingcode, int status) {
+        final Response response = given(requestSpecification)
+                .pathParam("calling-code", callingcode)
+                .get("/callingcode/{calling-code}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
+    public Response getCountryByRegion(String region, int status) {
+        final Response response = given(requestSpecification)
+                .pathParam("region-name", region)
+                .get("/region/{region-name}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
+
+    public Response getCountryByRegionalBloc(String regionalbloc, int status) {
+        final Response response = given(requestSpecification)
+                .pathParam("regional-bloc", regionalbloc)
+                .get("/regionalbloc/{regional-bloc}");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(status);
+        return response;
+    }
 }
