@@ -31,11 +31,15 @@ public class RestCountryTESTS {
     }
 
     @Test(groups = {"smoke"})
-    public void verify_get_all_countries(String input) {
+    public void verify_get_all_countries() {
         try {
+            logger.info("--------------Test Started ------------");
             final Map<String, Boolean> testSteps = new HashMap<>();
             testSteps.put(TestSteps.STEP_GET_ALL_COUNTRIES.name(), true);
-            validateTest(testSteps, input);
+            validateTest(testSteps,"");
+
+            logger.info("--------------Test Ended ------------");
+
         } catch (Exception ex) {
             ex.printStackTrace();
             logger.info(ex);
