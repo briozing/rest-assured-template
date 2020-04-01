@@ -45,4 +45,6 @@ public class CountryDetailsDTO {
 
     private List<LanguageDTO> languages;
 
+    private List<RegionalBlocDTO> regionalBlocs;
+
 }

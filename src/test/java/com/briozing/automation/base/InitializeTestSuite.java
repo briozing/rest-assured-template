@@ -18,6 +18,7 @@ public class InitializeTestSuite {
     public final void init() {
         String envName = System.getProperty("envName");
         if (envName != null) {
+            System.out.println("Environment Name is: " + envName);
             Log4JFactory.getCommonLogger().info("====== rest-assured-template execution started ======");
             Properties properties = new Properties();
             try {
